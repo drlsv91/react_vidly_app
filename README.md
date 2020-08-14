@@ -1,3 +1,6 @@
+Introduction
+This project is the completion of master react course by Mosh Hamedani; the project is an imaginary video rental app: with the following features: - Pagination - search - Filtering display items - Sorting Items - React routing
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
