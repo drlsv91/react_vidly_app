@@ -123,11 +123,7 @@ class Movies extends Component {
               New Movie
             </Link>
           )}
-          <h3>
-            {movies.length === 0
-              ? 'There are No Movies in the Database'
-              : `Showing ${totalCount} Movies in the database`}
-          </h3>
+          <h3>Showing {totalCount} Movies in the database</h3>
           <SearchBox value={searchStr} onChange={this.handleSearch} />
           <MoviesTable
             onDelete={this.handleDeleteMovie}
