@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 const NavBar = ({ user }) => {
-  const len = Object.keys(user).length;
   return (
     <nav className='navbar navbar-expand navbar-light bg-light'>
       <Link to='/' className='navbar-brand nav-link'>
@@ -21,7 +20,7 @@ const NavBar = ({ user }) => {
             Rentals
           </NavLink>
 
-          {len === 0 && (
+          {!user && (
             <React.Fragment>
               <NavLink to='/login' className='nav-item nav-link'>
                 Login
@@ -31,7 +30,7 @@ const NavBar = ({ user }) => {
               </NavLink>
             </React.Fragment>
           )}
-          {len > 0 && (
+          {user && (
             <React.Fragment>
               <NavLink to='/profile' className='nav-item nav-link'>
                 {user.name}

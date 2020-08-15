@@ -107,6 +107,7 @@ class Movies extends Component {
     } = this.state;
 
     const { data: movies, totalCount } = this.getPagedData();
+    const { user } = this.props;
     return (
       <div className='row'>
         <div className='col-3'>
@@ -117,9 +118,11 @@ class Movies extends Component {
           />
         </div>
         <div className='col'>
-          <Link to='/movies/new' className='btn btn-primary'>
-            New Movie
-          </Link>
+          {user && (
+            <Link to='/movies/new' className='btn btn-primary'>
+              New Movie
+            </Link>
+          )}
           <h3>
             {movies.length === 0
               ? 'There are No Movies in the Database'

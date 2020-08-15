@@ -60,7 +60,6 @@ class MovieForm extends Form {
     try {
       await saveMovie(this.state.data);
       this.props.history.push('/movies');
-      console.log('called');
     } catch (err) {
       console.log(err.message);
     }
