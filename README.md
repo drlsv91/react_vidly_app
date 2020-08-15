@@ -8,7 +8,7 @@ This project is the completion of master react course by Mosh Hamedani; the proj
 - Sorting Items
 - React routing
 
-[View URL:](https://stark-chamber-40000.herokuapp.com/movies)
+You can view this project here: [View URL](https://stark-chamber-40000.herokuapp.com/movies)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
