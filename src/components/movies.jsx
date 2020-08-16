@@ -54,6 +54,7 @@ class Movies extends Component {
   handleGenreSelect = (genre) => {
     let selectedGenre = this.state.currentGenre;
     selectedGenre = genre;
+
     this.setState({ selectedGenre, currentPage: 1, searchStr: '' });
   };
   handleSort = (sortedColumn) => {
@@ -61,23 +62,15 @@ class Movies extends Component {
   };
   filterMovies = () => {
     const { movies: allMovies, selectedGenre, searchStr } = this.state;
-
-    const searchedMovies = allMovies.filter((m) =>
-      m.title.toLowerCase().includes(searchStr.trim().toLowerCase())
-    );
-
-    if (searchedMovies.length > 0) return searchedMovies;
-    else if (selectedGenre && selectedGenre._id)
-      return this.state.movies.filter(
-        (movie) => movie.genre._id === selectedGenre._id
+    let filtered = allMovies;
+    if (searchStr)
+      filtered = allMovies.filter((m) =>
+        m.title.toLowerCase().startsWith(searchStr.toLowerCase())
       );
-    else return allMovies;
+    else if (selectedGenre && selectedGenre._id)
+      filtered = allMovies.filter((m) => m.genre._id === selectedGenre._id);
 
-    // return selectedGenre && selectedGenre._id
-    //   ? this.state.movies.filter((movie) => {
-    //       return movie.genre._id === selectedGenre._id;
-    //     })
-    //   : allMovies;
+    return filtered;
   };
 
   getPagedData = () => {
@@ -85,8 +78,8 @@ class Movies extends Component {
     const filteredMovies = this.filterMovies();
     const sorted = _.orderBy(
       filteredMovies,
-      sortedColumn.path,
-      sortedColumn.orderBy
+      [sortedColumn.path],
+      [sortedColumn.orderBy]
     );
     const movies = paginate(sorted, currentPage, pageSize);
     const totalCount = filteredMovies.length;
